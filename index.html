@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 5</title>
+
+    <!-- JQUERY CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+    
+    <style>
+        body{
+            background-color: rgb(31, 31, 31);
+        }
+        h1{
+            color: white;
+        }
+        .date{
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #2e2874;
+            border-radius: 10px;
+            border: 0;
+        }
+        .but{
+            margin: 50px;
+        }
+        .date:hover{
+            cursor:pointer;
+        }
+        /* Style the tab */
+        .tab {
+          overflow: hidden;
+          background-color: #2e2874;
+        }
+        
+        /* Style the buttons inside the tab */
+        .tab button {
+          background-color: inherit;
+          float:left;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 20px;
+          color: whitesmoke;
+        }
+        
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+          background-color: rgb(31, 31, 31);
+        }
+        
+        /* Create an active/current tablink class */
+        .tab button.active {
+          background-color: rgb(89, 0, 255);
+        }
+        
+        /* Style the tab content */
+        .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          -webkit-animation: fadeEffect 1s;
+          animation: fadeEffect 1s;
+        }
+        
+        /* Fade in tabs */
+        @-webkit-keyframes fadeEffect {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+        
+        @keyframes fadeEffect {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+
+        .ui-menu {
+            width: 500px;
+         }
+    </style>
+
+    <script>
+        function openCity(evt, branchName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(branchName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        $().ready(()=>{
+            $(()=>{
+                $( ".menu-1" ).menu();
+                $( "#datepicker" ).datepicker();
+            });
+            $(".date").click((datepicker)=>{
+                var date = $("#datepicker").val();
+                if(date == ""){
+                    alert("Select a Data First!");
+                }else{
+                    alert("You Selected : "+date);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <center>
+        <h1>Popular Engineering Branch!</h1>
+    </center>
+        <div class="tab">
+          <button class="tablinks" onclick="openCity(event, 'computer')">Computer</button>
+          <button class="tablinks" onclick="openCity(event, 'mechanical')">Mechanical</button>
+          <button class="tablinks" onclick="openCity(event, 'electrical')">Electrical</button>
+          <button class="tablinks" onclick="openCity(event, 'civil')">Civil</button>
+        </div>
+
+        <div id="computer" class="tabcontent">
+            <h1>Computer</h1>
+            <ul class="menu-1">
+                <li><a href="#">First Year</a>
+                    <ul>
+                        <li>3110005 - Basic Electrical Engineering</li>  
+                        <li>3110007 - Environmental Science</li>  
+                        <li>3110013 - Engineering Graphics & Design</li>  
+                        <li>3110014 - Mathematics-I</li>  
+                        <li>3110003 - Programming for Problem Solving</li>  
+                        <li>3110006 - Basic Mechanical Engineering</li>
+                        <li>3110015 - Mathematics-II</li>
+                        <li>3110016 - Basic Electronics</li>
+                        <li>3110018 - Physics Group - II</li>
+                     </ul>
+                </li>
+                <li><a href="#">Second Year</a></li>
+                <li><a href="#">Third Year</a></li>
+                <li><a href="#">Fourth Year</a></li>
+             </ul> 
+        </div>
+        
+        <div id="mechanical" class="tabcontent">
+            <h1>Mechanical</h1>
+            <ul class="menu-1">  
+                <li><a href="#">First Year</a>
+                    <ul>
+                        <li>3110005 - Basic Electrical Engineering</li>  
+                        <li>3110007 - Environmental Science</li>  
+                        <li>3110013 - Engineering Graphics & Design</li>  
+                        <li>3110014 - Mathematics-I</li>  
+                        <li>3110003 - Programming for Problem Solving</li>  
+                        <li>3110006 - Basic Mechanical Engineering</li>
+                        <li>3110015 - Mathematics-II</li>
+                        <li>3110016 - Basic Electronics</li>
+                        <li>3110018 - Physics Group - II</li>
+                     </ul>
+                </li>
+                <li><a href="#">Second Year</a></li>
+                <li><a href="#">Third Year</a></li>
+                <li><a href="#">Fourth Year</a></li>
+             </ul> 
+        </div>
+        
+        <div id="electrical" class="tabcontent">
+            <h1>Electrical</h1>
+            <ul class="menu-1">  
+                <li><a href="#">First Year</a>
+                    <ul>
+                        <li>3110005 - Basic Electrical Engineering</li>  
+                        <li>3110007 - Environmental Science</li>  
+                        <li>3110013 - Engineering Graphics & Design</li>  
+                        <li>3110014 - Mathematics-I</li>  
+                        <li>3110003 - Programming for Problem Solving</li>  
+                        <li>3110006 - Basic Mechanical Engineering</li>
+                        <li>3110015 - Mathematics-II</li>
+                        <li>3110016 - Basic Electronics</li>
+                        <li>3110018 - Physics Group - II</li>
+                     </ul>
+                </li>
+                <li><a href="#">Second Year</a></li>
+                <li><a href="#">Third Year</a></li>
+                <li><a href="#">Fourth Year</a></li>
+             </ul> 
+        </div>
+        
+        <div id="civil" class="tabcontent">
+            <h1>Civil</h1>
+            <ul class="menu-1">  
+                <li><a href="#">First Year</a>
+                    <ul>
+                        <li>3110005 - Basic Electrical Engineering</li>  
+                        <li>3110007 - Environmental Science</li>  
+                        <li>3110013 - Engineering Graphics & Design</li>  
+                        <li>3110014 - Mathematics-I</li>  
+                        <li>3110003 - Programming for Problem Solving</li>  
+                        <li>3110006 - Basic Mechanical Engineering</li>
+                        <li>3110015 - Mathematics-II</li>
+                        <li>3110016 - Basic Electronics</li>
+                        <li>3110018 - Physics Group - II</li>
+                     </ul>
+                </li>
+                <li><a href="#">Second Year</a></li>
+                <li><a href="#">Third Year</a></li>
+                <li><a href="#">Fourth Year</a></li>
+             </ul> 
+        </div>
+        <div class="but">
+            <center>
+                <input type="text" id="datepicker" placeholder="Select Date">
+                <br>
+                <button class="date">Pick Date</button>
+            </center>
+        </div>
+</body>
+</html>
